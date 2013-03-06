@@ -1,0 +1,10 @@
+int isStraightFlush(char* hand);
+int isQuads(char* hand);
+int isFullHouse(char* hand);
+int isFlush(char* hand);
+int isStraight(char* hand);
+int isTrips(char* hand);
+int isTwoPairs(char* hand);
+int isSinglePair(char* hand);
+char* calculForceSymbolique(char* hand);
+int compare(char* pow1, char* pow2);
