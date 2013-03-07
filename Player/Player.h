@@ -10,6 +10,7 @@
 #include "Card.h"
 #include "PlayerState.h"
 #include "PlayerStateList.h"
+#include "PlayerStatistics.h"
 
 class Game;
 
@@ -57,6 +58,10 @@ public:
 		this->currentState = state;
 	}
 
+	PlayerStatistics* getStatistics() const{
+		return statistics;
+	}
+
 protected:
 	int id;
 	Game *game;
@@ -65,6 +70,7 @@ protected:
 	Card *hand[2];
 	PlayerStateList *stateList;
 	PlayerState *currentState;
+	PlayerStatistics *statistics;
 };
 
 #endif /* PLAYER_H_ */
