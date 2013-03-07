@@ -13,6 +13,7 @@
 #include <iostream>
 
 void River::play() {
+	game->setState(RIVER);
 	game->getDeck()->pick();
 	game->getCardsOnTable()[4] = game->getDeck()->pick();
 	game->setCardsOnTableCount(5);
