@@ -21,5 +21,8 @@ void Raise::execute() {
 		left = 0;
 	player->setCurrentBet(player->getCurrentBet() + totalAmount + left);
 	game->setCurrentBet(player->getCurrentBet());
+	
+	player->getStatistics()->incrementStat(RAISE,game->getState());
+	// TODO calculer montant moyen de la relance
 }
 
