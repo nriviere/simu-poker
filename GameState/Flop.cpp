@@ -13,6 +13,7 @@
 
 void Flop::play()
 {
+	game->setState(FLOP);
 	game->getDeck()->pick();
 	game->getCardsOnTable()[0] = game->getDeck()->pick();
 	game->getCardsOnTable()[1] = game->getDeck()->pick();
