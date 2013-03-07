@@ -129,6 +129,14 @@ public:
 		return deck;
 	}
 
+	int getState(){
+		return state;
+	}
+	
+	void setState(int s){
+		state = s;
+	}
+
 private:
 	PlayerList *playerList;
 	std::list<Action*> actions;
@@ -144,6 +152,8 @@ private:
 
 	GameStateList *stateList;
 	GameState *currentState;
+	
+	int state;
 };
 
 #endif /* GAME_H_ */
