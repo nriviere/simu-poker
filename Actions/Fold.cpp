@@ -19,5 +19,6 @@ Fold::~Fold() {
 void Fold::execute() {
 	game->getPlayerList()->fold();
 	//player->setCurrentState(player->getStateList()->getFoldState());
+	player->getStatistics()->incrementStat(FOLD,game->getState());
 }
 
