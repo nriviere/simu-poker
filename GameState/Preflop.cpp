@@ -12,6 +12,7 @@
 
 void Preflop::play()
 {
+	game->setState(PFLOP);
 	game->setCardsOnTableCount(0);
 	PlayerList *playerList = game->getPlayerList();
 	playerList->initPlayersInGame();
