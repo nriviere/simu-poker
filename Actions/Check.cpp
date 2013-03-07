@@ -14,6 +14,7 @@ Check::~Check() {
 
 void Check::execute()
 {
+	player->getStatistics()->incrementStat(CHECK,game->getState());
 }
 
 
