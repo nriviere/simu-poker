@@ -42,15 +42,15 @@ class PlayerStatistics {
 		int profil;
 		int level;
 
-		int nbMain;			//ok
+		int nbMain;		//ok
 		int nbBet[NTOUR];	//ok
 		int nbCall[NTOUR];	//ok
 		int nbRaise[NTOUR];	//ok
 		int nbFold[NTOUR];	//ok
 		int nbCheck[NTOUR];	//ok
 
-		int showDown;		//ok
-		int SDWin;			//ok
+		int showDown;		
+		int SDWin;	
 		int NoSDWin[NTOUR];
 		int avgRaise[NTOUR];
 
