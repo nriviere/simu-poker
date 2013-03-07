@@ -14,6 +14,7 @@
 
 void Turn::play()
 {
+	game->setState(TURN);
 	game->getDeck()->pick();
 	game->getCardsOnTable()[3] = game->getDeck()->pick();
 	game->setCardsOnTableCount(4);
