@@ -28,6 +28,7 @@ Game::Game(Player **players, int playerCount, unsigned int smallBlindAmount) {
 	this->currentBet = 0;
 	this->pot = 0;
 	this->deck = new Deck();
+	state = -1;
 }
 
 void Game::play() {
