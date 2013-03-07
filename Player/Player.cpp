@@ -21,6 +21,7 @@ Player::Player(int bankRoll) {
 	this->currentState = stateList->getInGameState();
 	currentBet = 0;
 	id = 0;
+	statistics = new PlayerStatistics();
 }
 
 Player::Player(const Player &player) {
@@ -30,14 +31,17 @@ Player::Player(const Player &player) {
 	currentBet = player.currentBet;
 	hand[0] = player.hand[0];
 	hand[1] = player.hand[1];
+	statistics = new PlayerStatistics(*player.statistics);
 }
 
 Player::~Player() {
+	delete statistics;
 }
 
 void Player::setHand(Card *card1, Card *card2) {
 	this->hand[0] = card1;
 	this->hand[1] = card2;
+	statistics->incrementStat(HAND);
 }
 
 void Player::play() {
@@ -55,6 +59,7 @@ int Player::modifyBankRoll(int amount) {
 
 void Player::setId(const int id) {
 	this->id = id;
+	statistics->setPlayerId(id);
 }
 
 int Player::getId() {
