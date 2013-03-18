@@ -101,6 +101,7 @@ class PlayerStatistics {
 		void incrementStat(int stat, int tour = 0);
 
 		string profilStr();
+		string toString() const;
 
 };
 
