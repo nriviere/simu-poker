@@ -47,6 +47,7 @@ class PlayerStatistics {
 		int nbBet[NTOUR];	//ok
 		int nbCall[NTOUR];	//ok
 		int nbRaise[NTOUR];	//ok
+		int nbAllIn[NTOUR];
 		int nbFold[NTOUR];	//ok
 		int nbCheck[NTOUR];	//ok
 
