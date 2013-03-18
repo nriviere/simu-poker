@@ -201,6 +201,50 @@ string PlayerStatistics::toString() const{
 	return tmp.str();
 }
 
+
+string PlayerStatistics::updateBdRequest() const{
+	stringstream req;
+
+	req << "UPDATE player SET profile=" << profil << ", profile_level="<<level <<", ";
+	req << "hand_count="<<nbMain<<", shodown="<<showDown<<", showdown_win="<<SDWin<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE NoSdStat SET preflop="<<NoSDWin[PFLOP]<<", flop="<<NoSDWin[FLOP]<<", ";
+	req << "turn="<<NoSDWin[TURN]<<", river="<<NoSDWin[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE BetStat SET preflop="<<nbBet[PFLOP]<<", flop="<<nbBet[FLOP]<<", ";
+	req << "turn="<<nbBet[TURN]<<", river="<<nbBet[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE CallStat SET preflop="<<nbCall[PFLOP]<<", flop="<<nbCall[FLOP]<<", ";
+	req << "turn="<<nbCall[TURN]<<", river="<<nbCall[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE RaiseStat SET preflop="<<nbRaise[PFLOP]<<", flop="<<nbRaise[FLOP]<<", ";
+	req << "turn="<<nbRaise[TURN]<<", river="<<nbRaise[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE AllinStat SET preflop="<<nbAllIn[PFLOP]<<", flop="<<nbAllIn[FLOP]<<", ";
+	req << "turn="<<nbAllIn[TURN]<<", river="<<nbAllIn[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE FoldStat SET preflop="<<nbFold[PFLOP]<<", flop="<<nbFold[FLOP]<<", ";
+	req << "turn="<<nbFold[TURN]<<", river="<<nbFold[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE CheckStat SET preflop="<<nbCheck[PFLOP]<<", flop="<<nbCheck[FLOP]<<", ";
+	req << "turn="<<nbCheck[TURN]<<", river="<<nbCheck[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	req << "UPDATE AvgRaiseStat SET preflop="<<avgRaise[PFLOP]<<", flop="<<avgRaise[FLOP]<<", ";
+	req << "turn="<<avgRaise[TURN]<<", river="<<avgRaise[RIVER]<<"\n";
+	req << "WHERE player_id="<<playerId<<";\n\n";
+
+	return req.str();
+}
+
+
 int PlayerStatistics::getPlayerId() const { return playerId; }
 int PlayerStatistics::getNbMain() const { return nbMain; }
 int PlayerStatistics::getNbBet(int tour) const { return nbBet[tour]; }
