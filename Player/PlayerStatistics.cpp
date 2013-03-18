@@ -7,7 +7,7 @@ PlayerStatistics::PlayerStatistics() {
 		nbBet[i] = nbCall[i] = 0;
 		nbRaise[i] = nbFold[i] = 0;
 		nbCheck[i] = NoSDWin[i] = 0;
-		avgRaise[i] = 0;
+		avgRaise[i] = nbAllIn[i] = 0;
 	}
 	profil = level = 0;
 }
@@ -133,6 +133,73 @@ void PlayerStatistics::incrementStat(int stat, int tour){
 	}
 }
 
+string PlayerStatistics::toString() const{
+    stringstream tmp;
+	int total = 0;
+
+	float f = 0;
+
+    if(showDown) f = 100*(SDWin/(float)showDown);
+
+	tmp << "Hand count\t:\t" << nbMain << "\n";
+	tmp << "Total Shodown\t:\t" << showDown << "\t";
+    tmp << "(Win " << SDWin << "/" << showDown << " ";
+	tmp << (int) f << "% )\n";
+
+	tmp << "Stat\tPFlop\tFlop\tTurn\tRiver\tTotal\n";
+
+	tmp << "Bet";
+	for(int i=0; i<NTOUR;i++){
+		total += nbBet[i];
+		tmp << "\t" << nbBet[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	tmp << "Call";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += nbCall[i];
+		tmp << "\t" << nbCall[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	tmp << "Check";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += nbCheck[i];
+		tmp << "\t" << nbCheck[i];
+	}
+	tmp << "\t" << total << "\n";
+
+
+	tmp << "Raise";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += nbRaise[i];
+		tmp << "\t" << nbRaise[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	tmp << "All In";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += nbAllIn[i];
+		tmp << "\t" << nbAllIn[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	tmp << "Fold";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += nbFold[i];
+		tmp << "\t" << nbFold[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	tmp << "Win";	total = 0;
+	for(int i=0; i<NTOUR;i++){
+		total += NoSDWin[i];
+		tmp << "\t" << NoSDWin[i];
+	}
+	tmp << "\t" << total << "\n";
+
+	return tmp.str();
+}
 
 int PlayerStatistics::getPlayerId() const { return playerId; }
 int PlayerStatistics::getNbMain() const { return nbMain; }
