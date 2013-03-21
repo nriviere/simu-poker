@@ -103,6 +103,7 @@ class PlayerStatistics {
 		void incrementStat(int stat, int tour = 0);
 
 		string profilStr();
+		string updateBdRequest() const;
 		string toString() const;
 
 };

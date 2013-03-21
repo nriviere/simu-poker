@@ -69,7 +69,6 @@ void PlayerList::initPlayersInGame() {
 	playersInGame.clear();
 	for (std::list<Player*>::iterator ite = players.begin(); ite
 			!= players.end();) {
-		Player *p = (*ite);
 		playersInGame.push_back((*ite));
 		++ite;
 	}
