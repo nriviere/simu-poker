@@ -17,6 +17,15 @@ public:
 	void shuffle();
 	void printOrder();
 	Card *pick();
+	
+	Card* getCard(const char* id, int* pos = NULL);
+	//recherche une carte dans le paquet el la retourne en 
+	//stockent sa position dans pos (utilisé dans HandPowerTest)
+	
+	bool putOnTop(const Card& c);
+	//recherche c dans le paquet et la place tout en haut
+	//(utilisé dans handPowerTest)
+	
 private:
 	void init();
 	Card **cards;
