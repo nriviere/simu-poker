@@ -2,6 +2,9 @@
 #include "Deck.h"
 #include "Player.h"
 #include "CommandLinePlayer.h"
+
+#include "HandPowerTest.h"
+
 #include <list>
 #include <iostream>
 using namespace std;
@@ -84,16 +87,17 @@ int main() {
 	delete[] players;
 	
 	
+	/* Exemple d'affichage de la proba de gain avec As Kh*/
 	Deck d2;
 	int maxPlayerTestCount = 6;
 	HandPowerTest t;
 	vector<Card*> cards;
-	cards.push_back(deck.getCard("As"));
-	cards.push_back(deck.getCard("Kh"));
-//	cards.push_back(deck.getCard("4d"));
-//	cards.push_back(deck.getCard("2c"));
-//	cards.push_back(deck.getCard("5d"));
-//	cards.push_back(deck.getCard("8h"));
+	cards.push_back(d2.getCard("As"));
+	cards.push_back(d2.getCard("Kh"));
+//	cards.push_back(d2.getCard("4d"));
+//	cards.push_back(d2.getCard("2c"));
+//	cards.push_back(d2.getCard("5d"));
+//	cards.push_back(d2.getCard("8h"));
 
 	for(int i=1; i<maxPlayerTestCount; i++){
 		t.testPower(cards,i,100000);
