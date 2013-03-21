@@ -82,5 +82,23 @@ int main() {
 		delete players[i];
 	}
 	delete[] players;
+	
+	
+	Deck d2;
+	int maxPlayerTestCount = 6;
+	HandPowerTest t;
+	vector<Card*> cards;
+	cards.push_back(deck.getCard("As"));
+	cards.push_back(deck.getCard("Kh"));
+//	cards.push_back(deck.getCard("4d"));
+//	cards.push_back(deck.getCard("2c"));
+//	cards.push_back(deck.getCard("5d"));
+//	cards.push_back(deck.getCard("8h"));
+
+	for(int i=1; i<maxPlayerTestCount; i++){
+		t.testPower(cards,i,100000);
+	}
+	
+	
 	return 0;
 }
