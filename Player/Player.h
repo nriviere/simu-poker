@@ -61,6 +61,8 @@ public:
 	PlayerStatistics* getStatistics() const{
 		return statistics;
 	}
+	
+	Card* getHand(int i) { return hand[i]; }
 
 protected:
 	int id;
