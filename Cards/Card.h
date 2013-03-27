@@ -26,6 +26,16 @@ public:
 		return order;
 	}
 	void print();
+	
+	int getIntColor()const{ //renvoie un int entre 0 et CARD_COLOR_COUNT-1
+				//utilisé pour detecter les quinte-flush
+		return order%CARD_COLOR_COUNT;
+	}
+
+	int getPower() const{
+		return CARD_POWER[order/CARD_COLOR_COUNT];
+	}
+	
 
 
 private :

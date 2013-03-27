@@ -62,3 +62,33 @@ void Deck::printOrder() {
 		std::cout << c->getId() << std::endl;
 	}
 }
+
+Card* Deck::getCard(const char* id, int *pos){
+	int t = -1;
+	bool found = false;
+	do {
+		t++;
+		found = cards[t]->getId()[0]==id[0];
+		found = found && cards[t]->getId()[1]==id[1];
+	}while(!found && t<52);
+
+	if(found && pos){
+		*pos = t;
+	}
+
+
+	return found ? cards[t] : 0;
+}
+
+bool Deck::putOnTop(const Card& c){
+	bool ret = false;
+	int p = -1;
+	Card* dc = getCard(c.getId(),&p);
+ 	if(dc){
+		cards[p] = cards[top];
+		cards[top] = dc;
+		ret = true;
+	}
+	return ret;
+}
+
