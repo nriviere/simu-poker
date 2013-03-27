@@ -253,4 +253,3 @@ int compare(char* pow1, char* pow2) {
 	}
 	return pow1[0]-pow2[0];
 }
-

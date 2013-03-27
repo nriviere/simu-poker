@@ -6,18 +6,21 @@
 CPP_SRCS += \
 ../Game.cpp \
 ../HandPower.cpp \
+../HandPowerTest.cpp \
 ../MySqlApi.cpp \
 ../test.cpp 
 
 OBJS += \
 ./Game.o \
 ./HandPower.o \
+./HandPowerTest.o \
 ./MySqlApi.o \
 ./test.o 
 
 CPP_DEPS += \
 ./Game.d \
 ./HandPower.d \
+./HandPowerTest.d \
 ./MySqlApi.d \
 ./test.d 
 
