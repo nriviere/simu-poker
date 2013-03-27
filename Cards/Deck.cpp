@@ -13,7 +13,6 @@
 Deck::Deck(int cardCount) {
 	this->cardCount = cardCount;
 	cards = new Card*[cardCount];
-	top = 0;
 	init();
 	shuffle();
 }
@@ -53,6 +52,7 @@ void Deck::init() {
 				cards[cardNumber++] = new Card(CARD_NUMBERS[i], CARD_COLORS[j],cardNumber);
 		}
 	}
+	top = 0;
 }
 
 void Deck::printOrder() {

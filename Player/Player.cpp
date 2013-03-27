@@ -17,8 +17,6 @@ Player::Player() {
 
 Player::Player(int bankRoll) {
 	this->bankRoll = bankRoll;
-	this->stateList = new PlayerStateList(this);
-	this->currentState = stateList->getInGameState();
 	currentBet = 0;
 	id = 0;
 	statistics = new PlayerStatistics();
@@ -26,8 +24,6 @@ Player::Player(int bankRoll) {
 
 Player::Player(const Player &player) {
 	this->bankRoll = player.bankRoll;
-	this->stateList = new PlayerStateList(this);
-	this->currentState = stateList->getInGameState();
 	currentBet = player.currentBet;
 	hand[0] = player.hand[0];
 	hand[1] = player.hand[1];
@@ -45,7 +41,7 @@ void Player::setHand(Card *card1, Card *card2) {
 }
 
 void Player::play() {
-	currentState->play();
+	iPlay();
 }
 
 int Player::modifyBankRoll(int amount) {
@@ -81,7 +77,7 @@ void Player::payBigBlind() {
 }
 
 bool Player::canEndState() {
-	return getCurrentBet() == game->getCurrentBet();
+	return getCurrentBet() == game->getCurrentBet() || bankRoll == 0;
 }
 
 void Player::iPlay() {

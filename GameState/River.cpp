@@ -49,47 +49,55 @@ void River::endOfTurn() {
 	if (playersLeft == 1) {
 		GameState::endOfTurn();
 	} else {
-		std::list<Player *> maxPowerPlayers;
-		char *max, *value;
-
-		Player *player;
-		player = game->getPlayerList()->getNext();
-		max = player->getHandPower();
-		maxPowerPlayers.push_back(player);
-
-		std::cout << "Player : " << player->getId() << " " << max << std::endl;
-
-		for (int i = 1; i < playersLeft; i++) {
-			player = game->getPlayerList()->getNext();
-			value = player->getHandPower();
-
-			std::cout << "Player : " << player->getId() << " " << value
-					<< std::endl;
-
-			if (compare(value, max) > 0) {
-				std::cout << "New Max : " << value << " > " << max << std::endl;
-				max = value;
-				maxPowerPlayers.clear();
-				maxPowerPlayers.push_back(player);
-			}
-			if (compare(value, max) == 0) {
-				maxPowerPlayers.push_back(player);
-			}
-		}
-		std::cout << "Max : " << max << std::endl;
-
 		game->updatePot();
+		list<Pot*>::iterator pot;
+		cout << game->getPots()->size() << endl;
+		for (pot = game->getPots()->begin(); pot != game->getPots()->end();) {
+			std::list<Player *> maxPowerPlayers;
+			char *max, *value;
+			cout << "Players in pot "<< (*pot)->getRegisteredPlayers()->size() << endl;
+			cout << "Pot value : " << (*pot)->getAmount() << endl;
+			std::list<Player *>::iterator ite =
+					(*pot)->getRegisteredPlayers()->begin();
+			max = (*ite)->getHandPower();
+			maxPowerPlayers.push_back((*ite));
+			std::cout << "Player : " << (*ite)->getId() << " " << max
+								<< std::endl;
 
-		int amount = (int) (1. * game->getPot() / maxPowerPlayers.size());
+			for (++ite; ite != (*pot)->getRegisteredPlayers()->end();) {
 
-		for (std::list<Player *>::iterator ite = maxPowerPlayers.begin(); ite
-				!= maxPowerPlayers.end();) {
-			std::cout << "Player : " << (*ite)->getId() << " wins !"
-					<< std::endl;
-			(*ite)->modifyBankRoll(amount);
-			++ite;
+				value = (*ite)->getHandPower();
+
+				std::cout << "Player : " << (*ite)->getId() << " " << value
+						<< std::endl;
+
+				if (compare(value, max) > 0) {
+					std::cout << "New Max : " << value << " > " << max
+							<< std::endl;
+					max = value;
+					maxPowerPlayers.clear();
+					maxPowerPlayers.push_back((*ite));
+				}
+				if (compare(value, max) == 0) {
+					maxPowerPlayers.push_back((*ite));
+				}
+				++ite;
+			}
+			std::cout << "Max : " << max << std::endl;
+
+			int amount = (int) (1. * (*pot)->getAmount()
+					/ maxPowerPlayers.size());
+			//std::cout << "current pot amount " <<
+			for (std::list<Player *>::iterator ite = maxPowerPlayers.begin(); ite
+					!= maxPowerPlayers.end();) {
+				std::cout << "Player : " << (*ite)->getId() << " wins !"
+						<< std::endl;
+				(*ite)->modifyBankRoll(amount);
+				++ite;
+			}
+			++pot;
 		}
-		game->setPot(0);
+		game->getPots()->clear();
 	}
 	game->getPlayerList()->eraseLosers();
 	if (canEndGame()) {

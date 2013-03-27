@@ -28,6 +28,14 @@ public:
 	int allPayPot();
 	void fold();
 
+	list<Player*> getPlayersInGame() {
+		return this->playersInGame;
+	}
+
+	list<Player*> getPlayers() {
+		return this->players;
+	}
+
 private:
 	int playerCount;
 	Game *game;

@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Actions/Action.cpp \
+../Actions/AllIn.cpp \
 ../Actions/Call.cpp \
 ../Actions/Check.cpp \
 ../Actions/Fold.cpp \
@@ -12,6 +13,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./Actions/Action.o \
+./Actions/AllIn.o \
 ./Actions/Call.o \
 ./Actions/Check.o \
 ./Actions/Fold.o \
@@ -19,6 +21,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./Actions/Action.d \
+./Actions/AllIn.d \
 ./Actions/Call.d \
 ./Actions/Check.d \
 ./Actions/Fold.d \

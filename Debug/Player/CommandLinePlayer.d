@@ -1,9 +1,8 @@
 Player/CommandLinePlayer.d Player/CommandLinePlayer.o: \
  ../Player/CommandLinePlayer.cpp ../Player/CommandLinePlayer.h \
  ../Player/Player.h /home/viande/workspace/Poker/Cards/Card.h \
- ../Player/PlayerState.h ../Player/PlayerStateList.h \
- ../Player/OutGameState.h ../Player/InGameState.h ../Player/FoldState.h \
- ../Player/PlayerStatistics.h /home/viande/workspace/Poker/Game.h \
+ ../Player/PlayerState.h ../Player/PlayerStatistics.h \
+ /home/viande/workspace/Poker/Game.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
  /home/viande/workspace/Poker/GameState/GameStateList.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
@@ -14,7 +13,8 @@ Player/CommandLinePlayer.d Player/CommandLinePlayer.o: \
  /home/viande/workspace/Poker/Player/Player.h \
  /home/viande/workspace/Poker/Actions/Action.h \
  /home/viande/workspace/Poker/Cards/Deck.h \
- /home/viande/workspace/Poker/Cards/Card.h
+ /home/viande/workspace/Poker/Cards/Card.h \
+ /home/viande/workspace/Poker/GameState/Pot.h
 
 ../Player/CommandLinePlayer.h:
 
@@ -23,14 +23,6 @@ Player/CommandLinePlayer.d Player/CommandLinePlayer.o: \
 /home/viande/workspace/Poker/Cards/Card.h:
 
 ../Player/PlayerState.h:
-
-../Player/PlayerStateList.h:
-
-../Player/OutGameState.h:
-
-../Player/InGameState.h:
-
-../Player/FoldState.h:
 
 ../Player/PlayerStatistics.h:
 
@@ -57,3 +49,5 @@ Player/CommandLinePlayer.d Player/CommandLinePlayer.o: \
 /home/viande/workspace/Poker/Cards/Deck.h:
 
 /home/viande/workspace/Poker/Cards/Card.h:
+
+/home/viande/workspace/Poker/GameState/Pot.h:

@@ -13,11 +13,11 @@
 #include "Player.h"
 #include "Action.h"
 #include "Deck.h"
+#include "Pot.h"
 
 class PlayerList;
 class Player;
 class Action;
-
 
 class Game {
 public:
@@ -30,23 +30,27 @@ public:
 	bool isCheckable();
 	void check(Player *player);
 	void fold(Player *player);
-	int updatePot();
+	void allIn(Player *player, int amount);
+	void updatePot();
+	void addPot(Pot *pot);
 	int addToPot(int amount);
 	void endOfTurn();
+	void initDeck();
+
+	Pot *getCurrentPot() {
+		return currentPot;
+	}
+
+	void setCurrentPot(Pot *pot) {
+		currentPot = pot;
+	}
+
 	int getCurrentBet() const {
 		return currentBet;
 	}
 
-	int getPot() const {
-		return pot;
-	}
-
 	void setCurrentBet(int currentBet) {
 		this->currentBet = currentBet;
-	}
-
-	void setPot(int pot) {
-		this->pot = pot;
 	}
 
 	int getCurrentPlayerId() {
@@ -121,28 +125,36 @@ public:
 		return cardsOnTableCount;
 	}
 
-	Card **getCardsOnTable(){
+	Card **getCardsOnTable() {
 		return cardsOnTable;
 	}
 
-	Deck *getDeck(){
+	Deck *getDeck() {
 		return deck;
 	}
 
-	int getState(){
+	void setDeck(Deck *deck) {
+		this->deck = deck;
+	}
+
+	std::list<Pot*> *getPots() {
+		return &this->pots;
+	}
+
+	int getState() {
 		return state;
 	}
-	
-	void setState(int s){
+
+	void setState(int s) {
 		state = s;
 	}
 
 private:
 	PlayerList *playerList;
 	std::list<Action*> actions;
+	std::list<Pot*> pots;
 	int turn;
 	int smallBlindAmount, bigBlindAmount;
-	int pot;
 	int currentBet;
 	int currentPlayerId;
 
@@ -152,7 +164,8 @@ private:
 
 	GameStateList *stateList;
 	GameState *currentState;
-	
+	Pot *currentPot;
+
 	int state;
 };
 

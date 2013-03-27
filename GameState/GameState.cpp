@@ -39,6 +39,7 @@ bool GameState::canEndGame() {
 	if (game->getPlayerList()->getPlayerCount() == 1) {
 		return true;
 	}
+	return false;
 }
 
 void GameState::endOfState() {
@@ -60,9 +61,9 @@ void GameState::endOfTurn() {
 	//TODO : Faire ca dans l'interface ex : creer une fonction win(player,amount) qui appelle la fonction win(amount) de player et qu'on peut redéfinir dans les joueurs interfacés.
 	std::cout << "End of turn." << std::endl;
 	std::cout << "Player " << player->getId() << " wins ! " << std::endl;
-	std::cout << "Pot :  " << game->getPot() << std::endl;
+	//std::cout << "Pot :  " << game->getPot() << std::endl;
 	std::cout << "Previous bankroll : " << player->getBankRoll();
-	player->modifyBankRoll(game->getPot());
+	player->modifyBankRoll(game->getCurrentPot()->getAmount());
 	std::cout << ", new bankroll : " << player->getBankRoll() << std::endl;
 
 	playerList->eraseLosers();
@@ -70,7 +71,7 @@ void GameState::endOfTurn() {
 		std::cout << "End of game" << std::endl;
 	} else {
 		playerList->setNextTurn();
-		game->setPot(0);
+		game->getPots()->clear();
 		game->setCurrentState(game->getStateList()->getPreflop());
 		game->play();
 	}

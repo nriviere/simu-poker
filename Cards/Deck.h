@@ -14,11 +14,12 @@ class Deck {
 public:
 	Deck(int cardCount = 52);
 	virtual ~Deck();
+	void init();
 	void shuffle();
 	void printOrder();
 	Card *pick();
 private:
-	void init();
+
 	Card **cards;
 	int cardCount;
 	int top;

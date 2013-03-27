@@ -25,7 +25,8 @@ void CommandLinePlayer::iPlay() {
 	cout << endl;
 	cout << "Current global bet : " << this->getGame()->getCurrentBet() << endl;
 	cout << "Your bet : " << this->currentBet << endl;
-	cout << "Current pot : " << this->getGame()->getPot() << endl;
+
+	//cout << "Current pot : " << this->getGame()->getPot() << endl;
 	cout << "Your bankroll  : " << this->bankRoll << endl;
 	int ans;
 	if (game->isCheckable()) {

@@ -12,9 +12,20 @@
 
 void Preflop::play()
 {
+	game->initDeck();
 	game->setState(PFLOP);
 	game->setCardsOnTableCount(0);
+	Pot *pot = new Pot();
 	PlayerList *playerList = game->getPlayerList();
+	list<Player *> players = playerList->getPlayers();
+
+	for (list<Player*>::iterator p = players.begin(); p != players.end();) {
+			pot->registerPlayer(*p);
+			++p;
+	}
+	game->setCurrentPot(pot);
+	game->getPots()->push_back(pot);
+
 	playerList->initPlayersInGame();
 	playersToPlay = playerList->getPlayersInGameCount();
 

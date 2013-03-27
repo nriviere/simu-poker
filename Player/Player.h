@@ -9,7 +9,7 @@
 #define PLAYER_H_
 #include "Card.h"
 #include "PlayerState.h"
-#include "PlayerStateList.h"
+
 #include "PlayerStatistics.h"
 
 class Game;
@@ -47,9 +47,7 @@ public:
 	void setCurrentBet(const int &currentBet) {
 		this->currentBet = currentBet;
 	}
-	PlayerStateList *getStateList() {
-		return stateList;
-	}
+
 	int getBankRoll() const
 	{
 		return bankRoll;
@@ -68,7 +66,6 @@ protected:
 	int bankRoll;
 	int currentBet;
 	Card *hand[2];
-	PlayerStateList *stateList;
 	PlayerState *currentState;
 	PlayerStatistics *statistics;
 };

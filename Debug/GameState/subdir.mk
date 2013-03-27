@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../GameState/Flop.cpp \
 ../GameState/GameState.cpp \
 ../GameState/GameStateList.cpp \
+../GameState/Pot.cpp \
 ../GameState/Preflop.cpp \
 ../GameState/River.cpp \
 ../GameState/Turn.cpp 
@@ -15,6 +16,7 @@ OBJS += \
 ./GameState/Flop.o \
 ./GameState/GameState.o \
 ./GameState/GameStateList.o \
+./GameState/Pot.o \
 ./GameState/Preflop.o \
 ./GameState/River.o \
 ./GameState/Turn.o 
@@ -23,6 +25,7 @@ CPP_DEPS += \
 ./GameState/Flop.d \
 ./GameState/GameState.d \
 ./GameState/GameStateList.d \
+./GameState/Pot.d \
 ./GameState/Preflop.d \
 ./GameState/River.d \
 ./GameState/Turn.d 
