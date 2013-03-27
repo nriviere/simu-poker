@@ -30,6 +30,7 @@
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Poker/GameState}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Poker/Player}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Poker}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Poker/TinyXml}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1815770922" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 </tool>

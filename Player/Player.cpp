@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Game.h"
 #include <iostream>
+#include <cstdlib>
 #include "HandPower.h"
 
 using namespace std;
@@ -28,6 +29,12 @@ Player::Player(const Player &player) {
 	hand[0] = player.hand[0];
 	hand[1] = player.hand[1];
 	statistics = new PlayerStatistics(*player.statistics);
+}
+
+Player *Player::clone() const
+{
+	exit(-1);
+	return new Player(*this);
 }
 
 Player::~Player() {

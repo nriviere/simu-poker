@@ -1,4 +1,6 @@
-test.d test.o: ../test.cpp ../Game.h \
+GameParser.d GameParser.o: ../GameParser.cpp ../GameParser.h \
+ /home/viande/workspace/Poker/TinyXml/tinyxml.h \
+ /home/viande/workspace/Poker/TinyXml/tinystr.h ../Game.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
  /home/viande/workspace/Poker/GameState/GameStateList.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
@@ -14,11 +16,15 @@ test.d test.o: ../test.cpp ../Game.h \
  /home/viande/workspace/Poker/Cards/Deck.h \
  /home/viande/workspace/Poker/Cards/Card.h \
  /home/viande/workspace/Poker/GameState/Pot.h \
- /home/viande/workspace/Poker/Player/CommandLinePlayer.h \
- /home/viande/workspace/Poker/Player/Player.h ../GameParser.h \
- /home/viande/workspace/Poker/TinyXml/tinyxml.h \
- /home/viande/workspace/Poker/TinyXml/tinystr.h ../HandPowerTest.h \
- /home/viande/workspace/Poker/Cards/HandPower2.h
+ /home/viande/workspace/Poker/Player/PlayerParser.h \
+ /home/viande/workspace/Poker/Player/Player.h \
+ /home/viande/workspace/Poker/Player/CommandLinePlayer.h
+
+../GameParser.h:
+
+/home/viande/workspace/Poker/TinyXml/tinyxml.h:
+
+/home/viande/workspace/Poker/TinyXml/tinystr.h:
 
 ../Game.h:
 
@@ -52,16 +58,8 @@ test.d test.o: ../test.cpp ../Game.h \
 
 /home/viande/workspace/Poker/GameState/Pot.h:
 
-/home/viande/workspace/Poker/Player/CommandLinePlayer.h:
+/home/viande/workspace/Poker/Player/PlayerParser.h:
 
 /home/viande/workspace/Poker/Player/Player.h:
 
-../GameParser.h:
-
-/home/viande/workspace/Poker/TinyXml/tinyxml.h:
-
-/home/viande/workspace/Poker/TinyXml/tinystr.h:
-
-../HandPowerTest.h:
-
-/home/viande/workspace/Poker/Cards/HandPower2.h:
+/home/viande/workspace/Poker/Player/CommandLinePlayer.h:

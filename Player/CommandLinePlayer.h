@@ -13,6 +13,8 @@
 class CommandLinePlayer: public Player {
 public:
 	CommandLinePlayer(int bankRoll):Player(bankRoll){}
+	CommandLinePlayer(const CommandLinePlayer &player):Player(player){};
+	Player *clone() const;
 	virtual ~CommandLinePlayer();
 	void iPlay();
 private:

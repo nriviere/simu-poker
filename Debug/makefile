@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include TinyXml/subdir.mk
 -include Player/subdir.mk
 -include GameState/subdir.mk
 -include Cards/subdir.mk

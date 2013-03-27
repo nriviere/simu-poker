@@ -61,6 +61,11 @@ void CommandLinePlayer::iPlay() {
 
 }
 
+Player *CommandLinePlayer::clone()  const
+{
+	return new CommandLinePlayer(*this);
+}
+
 CommandLinePlayer::~CommandLinePlayer() {
 	// TODO Auto-generated destructor stub
 }

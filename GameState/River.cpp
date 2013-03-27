@@ -55,16 +55,18 @@ void River::endOfTurn() {
 		for (pot = game->getPots()->begin(); pot != game->getPots()->end();) {
 			std::list<Player *> maxPowerPlayers;
 			char *max, *value;
-			cout << "Players in pot "<< (*pot)->getRegisteredPlayers()->size() << endl;
+			cout << "Players in pot " << (*pot)->getRegisteredPlayers()->size()
+					<< endl;
 			cout << "Pot value : " << (*pot)->getAmount() << endl;
 			std::list<Player *>::iterator ite =
 					(*pot)->getRegisteredPlayers()->begin();
 			max = (*ite)->getHandPower();
 			maxPowerPlayers.push_back((*ite));
-			std::cout << "Player : " << (*ite)->getId() << " " << max
-								<< std::endl;
 
-			for (++ite; ite != (*pot)->getRegisteredPlayers()->end();) {
+			std::cout << "Player : " << (*ite)->getId() << " " << max
+					<< std::endl;
+			++ite;
+			for (; ite != (*pot)->getRegisteredPlayers()->end();) {
 
 				value = (*ite)->getHandPower();
 
@@ -77,9 +79,14 @@ void River::endOfTurn() {
 					max = value;
 					maxPowerPlayers.clear();
 					maxPowerPlayers.push_back((*ite));
-				}
-				if (compare(value, max) == 0) {
+				} else if (compare(value, max) == 0) {
+					std::cout << "Nouvelle egalité" << std::endl;
 					maxPowerPlayers.push_back((*ite));
+					for (list<Player*>::iterator p = maxPowerPlayers.begin(); p
+							!= maxPowerPlayers.end(); ++p) {
+						std::cout << "Player : " << (*p)->getId() << " "
+								<< value << std::endl;
+					}
 				}
 				++ite;
 			}

@@ -1,0 +1,6 @@
+<Player>
+	<Parameters>
+		<PlayerType value = "CommandLinePlayer"/>
+		<BankRoll value = "1000" /> 
+	</Parameters>
+</Player>

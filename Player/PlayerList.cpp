@@ -28,6 +28,11 @@ PlayerList::PlayerList(Game *game, Player **players, int playerCount) {
 }
 
 PlayerList::~PlayerList() {
+	for (std::list<Player*>::iterator ite = players.begin(); ite
+			!= players.end();) {
+		delete (*ite);
+		++ite;
+	}
 }
 
 Player *PlayerList::getNext() {

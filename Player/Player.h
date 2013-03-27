@@ -19,6 +19,7 @@ public:
 	Player();
 	Player(const Player &player);
 	Player(int bankRoll);
+	virtual Player *clone() const;
 	virtual ~Player();
 	void play();
 	virtual void iPlay();
