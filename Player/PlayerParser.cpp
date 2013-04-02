@@ -34,6 +34,9 @@ Player *PlayerParser::parse(const char *fileName) {
 	if (strcmp(playerType, "CommandLinePlayer")==0) {
 		return parseCommandLinePlayer();
 	}
+	else if(strcmp(playerType, "RandomPlayer")==0){
+		return parseRandomPlayer();
+	}
 	return NULL;
 }
 
@@ -45,6 +48,11 @@ Player *PlayerParser::parsePlayer() {
 Player *PlayerParser::parseCommandLinePlayer() {
 	int bankRoll = atoi(doc->FirstChildElement("Player")->FirstChildElement("Parameters")->FirstChildElement("BankRoll")->Attribute("value"));
 	return new CommandLinePlayer(bankRoll);
+}
+
+Player *PlayerParser::parseRandomPlayer() {
+	int bankRoll = atoi(doc->FirstChildElement("Player")->FirstChildElement("Parameters")->FirstChildElement("BankRoll")->Attribute("value"));
+	return new RandomPlayer(bankRoll);
 }
 
 PlayerParser::~PlayerParser() {
