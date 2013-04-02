@@ -19,6 +19,7 @@ public:
 	Player *parse(const char *fileName);
 	Player *parsePlayer();
 	Player *parseCommandLinePlayer();
+	Player *parseRandomPlayer();
 	virtual ~PlayerParser();
 protected:
 	TiXmlDocument *doc;
