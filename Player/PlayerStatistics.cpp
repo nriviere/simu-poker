@@ -201,6 +201,22 @@ string PlayerStatistics::toString() const{
 	return tmp.str();
 }
 
+string PlayerStatistics::insertInBdRequest() const{
+	stringstream req;
+
+	req << "INSERT IGNORE INTO player(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO NoSdStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO BetStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO CallStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO RaiseStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO AllinStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO FoldStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO CheckStat(player_id) VALUES("<<playerId<<");\n";
+	req << "INSERT IGNORE INTO AvgRaiseStat(player_id) VALUES("<<playerId<<");\n";
+
+
+	return req.str();
+}
 
 string PlayerStatistics::updateBdRequest() const{
 	stringstream req;
