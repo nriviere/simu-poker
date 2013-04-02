@@ -10,6 +10,7 @@
 
 #include "Player.h"
 #include "CommandLinePlayer.h"
+#include "RandomPlayer.h"
 #include "tinyxml.h"
 
 class PlayerParser {
