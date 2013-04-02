@@ -1,9 +1,14 @@
 #include "MySqlApi.h"
 
-MySqlAPI::MySqlAPI(string path, string bdd){
+MySqlAPI::MySqlAPI(string path, string bdd, string adr, string user, string pwd){
     string default_param("");
     mysql_path = path;
-    default_param += " -h localhost -u root --default-character-set=latin1 ";
+    default_param += " -h "+ adr +" -u "+ user ;
+
+    if(pwd.length()){
+        default_param += " -p " + pwd;
+    }
+    default_param += " --default-character-set=latin1 ";
     default_param += (bdd + " -e \"");
     string_param = default_param;
     file_param = default_param + "source ";
