@@ -1,0 +1,6 @@
+<Player>
+  <Parameters>
+		<PlayerType value = "RandomPlayer"/>
+		<BankRoll value = "1000" /> 
+	</Parameters>
+</Player>
