@@ -20,6 +20,7 @@ public:
 	Player *parsePlayer();
 	Player *parseCommandLinePlayer();
 	Player *parseRandomPlayer();
+	Player *parseIAPlayer();
 	virtual ~PlayerParser();
 protected:
 	TiXmlDocument *doc;

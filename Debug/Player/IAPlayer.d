@@ -1,6 +1,7 @@
-GameParser.d GameParser.o: ../GameParser.cpp ../GameParser.h \
- /home/viande/workspace/Poker/TinyXml/tinyxml.h \
- /home/viande/workspace/Poker/TinyXml/tinystr.h ../Game.h \
+Player/IAPlayer.d Player/IAPlayer.o: ../Player/IAPlayer.cpp \
+ ../Player/IAPlayer.h ../Player/Player.h \
+ /home/viande/workspace/Poker/Cards/Card.h ../Player/PlayerState.h \
+ ../Player/PlayerStatistics.h /home/viande/workspace/Poker/Game.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
  /home/viande/workspace/Poker/GameState/GameStateList.h \
  /home/viande/workspace/Poker/GameState/GameState.h \
@@ -9,25 +10,22 @@ GameParser.d GameParser.o: ../GameParser.cpp ../GameParser.h \
  /home/viande/workspace/Poker/GameState/Turn.h \
  /home/viande/workspace/Poker/GameState/River.h \
  /home/viande/workspace/Poker/Player/Player.h \
- /home/viande/workspace/Poker/Cards/Card.h \
- /home/viande/workspace/Poker/Player/PlayerState.h \
- /home/viande/workspace/Poker/Player/PlayerStatistics.h \
  /home/viande/workspace/Poker/Actions/Action.h \
  /home/viande/workspace/Poker/Cards/Deck.h \
  /home/viande/workspace/Poker/Cards/Card.h \
- /home/viande/workspace/Poker/GameState/Pot.h \
- /home/viande/workspace/Poker/Player/PlayerParser.h \
- /home/viande/workspace/Poker/Player/Player.h \
- /home/viande/workspace/Poker/Player/CommandLinePlayer.h \
- /home/viande/workspace/Poker/Player/RandomPlayer.h
+ /home/viande/workspace/Poker/GameState/Pot.h ../Player/PlayerList.h
 
-../GameParser.h:
+../Player/IAPlayer.h:
 
-/home/viande/workspace/Poker/TinyXml/tinyxml.h:
+../Player/Player.h:
 
-/home/viande/workspace/Poker/TinyXml/tinystr.h:
+/home/viande/workspace/Poker/Cards/Card.h:
 
-../Game.h:
+../Player/PlayerState.h:
+
+../Player/PlayerStatistics.h:
+
+/home/viande/workspace/Poker/Game.h:
 
 /home/viande/workspace/Poker/GameState/GameState.h:
 
@@ -45,12 +43,6 @@ GameParser.d GameParser.o: ../GameParser.cpp ../GameParser.h \
 
 /home/viande/workspace/Poker/Player/Player.h:
 
-/home/viande/workspace/Poker/Cards/Card.h:
-
-/home/viande/workspace/Poker/Player/PlayerState.h:
-
-/home/viande/workspace/Poker/Player/PlayerStatistics.h:
-
 /home/viande/workspace/Poker/Actions/Action.h:
 
 /home/viande/workspace/Poker/Cards/Deck.h:
@@ -59,10 +51,4 @@ GameParser.d GameParser.o: ../GameParser.cpp ../GameParser.h \
 
 /home/viande/workspace/Poker/GameState/Pot.h:
 
-/home/viande/workspace/Poker/Player/PlayerParser.h:
-
-/home/viande/workspace/Poker/Player/Player.h:
-
-/home/viande/workspace/Poker/Player/CommandLinePlayer.h:
-
-/home/viande/workspace/Poker/Player/RandomPlayer.h:
+../Player/PlayerList.h:

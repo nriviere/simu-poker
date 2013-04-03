@@ -1,0 +1,8 @@
+<Player>
+	<Parameters>
+		<PlayerType value = "IAPlayer"/>
+		<BankRoll value = "1000" /> 
+		<Tightness value = "0.2" /> 
+		<Aggressiveness value = "0.3" /> 
+	</Parameters>
+</Player>
