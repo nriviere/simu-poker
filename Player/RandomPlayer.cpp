@@ -15,7 +15,33 @@ RandomPlayer::RandomPlayer(int bankRoll) : Player(bankRoll){
 }
 
 void RandomPlayer::iPlay(){
-  int d = rand()%10;
+
+
+        cout << "Random player " << id <<" ("<<bankRoll<<") : " << endl;
+        cout << "Hand : " << hand[0]->getId() << " " << hand[1]->getId() << endl;
+        cout << endl;
+        cout << "Current global bet : " << this->getGame()->getCurrentBet() << endl;
+        cout << "Your bet : " << this->currentBet << endl;
+
+	cout << "Cards on table :";
+	for(int i = 0; i < game->getCardsOnTableCount(); i++)
+	{
+		cout << " " << game->getCardsOnTable()[i]->getId();
+	}
+	cout << endl;
+
+	if(game->isCheckable()){
+		cout << "\tCHECK" << endl;
+		check();
+	}
+	else{
+		cout << "\tCALL" << endl;
+		call();
+	}
+
+
+/*	
+  	int d = rand()%10;
 	cout << "d="<<d<<"\t";
 	cout << "Random player " << id <<" ("<<bankRoll<<") : ";
 	if(game->isCheckable()){
@@ -51,7 +77,7 @@ void RandomPlayer::iPlay(){
 		}
 
 	}
-
+*/
 }
 
 Player *RandomPlayer::clone()  const
