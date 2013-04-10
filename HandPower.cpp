@@ -11,7 +11,7 @@ int isStraightFlush(char* hand) { // test de la Quinte Flush
 
 int isQuads(char* hand) { // test du Carré
 	int i, cpt = 0;
-	for (i = 0; i < 10; i = i + 2) {
+	for (i = 0; i < 8; i = i + 2) {
 		if (hand[i] == hand[i+2])
 			cpt++;
 	}
