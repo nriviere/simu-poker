@@ -47,8 +47,13 @@ void Deck::shuffle() {
 
 void Deck::init() {
 	int cardNumber = 0;
+	for(int i = 0; i < cardCount; i++ )
+	{
+		delete cards[i];
+	}
 	for (unsigned int i = 0; i < CARD_NUMBER_COUNT; i++) {
 		for (unsigned int j = 0; j < CARD_COLOR_COUNT; j++) {
+
 				cards[cardNumber++] = new Card(CARD_NUMBERS[i], CARD_COLORS[j],cardNumber);
 		}
 	}

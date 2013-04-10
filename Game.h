@@ -149,6 +149,8 @@ public:
 		state = s;
 	}
 
+	void setEndGame(){canEndGame = true;};
+
 private:
 	PlayerList *playerList;
 	std::list<Action*> actions;
@@ -157,7 +159,7 @@ private:
 	int smallBlindAmount, bigBlindAmount;
 	int currentBet;
 	int currentPlayerId;
-
+	bool canEndGame;
 	Card *cardsOnTable[5];
 	Deck *deck;
 	int cardsOnTableCount;

@@ -49,22 +49,32 @@ public:
 		this->currentBet = currentBet;
 	}
 
-	int getBankRoll() const
-	{
+	int getBankRoll() const {
 		return bankRoll;
 	}
 	void setCurrentState(PlayerState *state) {
 		this->currentState = state;
 	}
 
-	PlayerStatistics* getStatistics() const{
+	PlayerStatistics* getStatistics() const {
 		return statistics;
 	}
-	
-	Card* getHand(int i) { return hand[i]; }
+
+	int getPosition() {
+		return position;
+	}
+
+	void setPosition(int position) {
+		this->position = position;
+	}
+
+	Card* getHand(int i) {
+		return hand[i];
+	}
 
 protected:
 	int id;
+	int position;
 	Game *game;
 	int bankRoll;
 	int currentBet;

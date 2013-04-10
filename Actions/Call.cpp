@@ -14,7 +14,10 @@ Call::~Call() {
 }
 
 void Call::execute() {
-
+	if (player->getBankRoll()<=0)
+	{
+		return;
+	}
 	if (game->getCurrentBet() == 0) {
 		int diff = game->getBigBlindAmount() - player->getCurrentBet();
 		int left = player->modifyBankRoll(-diff);

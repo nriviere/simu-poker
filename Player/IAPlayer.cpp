@@ -57,26 +57,26 @@ void IAPlayer::iPlay(){
 	if(expectedValues(proba, gain)){
 		if(this->game->isCheckable()){
 			raise(this->aggressiveness * this->game->getBigBlindAmount());
-			cout << "raise : "<< this->aggressiveness * this->game->getBigBlindAmount() <<endl;
+			//cout << "raise : "<< this->aggressiveness * this->game->getBigBlindAmount() <<endl;
 		}else{
 			call();
-			cout << "call" <<endl;
+			//cout << "call" <<endl;
 		}
 
 	}else if(this->game->isCheckable()){
 		check();
-		cout << "check" <<endl;
+		//cout << "check" <<endl;
 	}else{
 		fold();
-		cout << "fold" <<endl;
+		//cout << "fold" <<endl;
 	}
 }
 
 //Esperance de gain : l'IA joue si (proba% * (pot - mise)) > 1
 bool IAPlayer::expectedValues(double proba, int gain){
-	cout << "proba = " << proba << endl;
-	cout << "gain = " << gain << endl;
-	cout << "EV = " << (proba/100.0) * gain  << endl;
+	//cout << "proba = " << proba << endl;
+	//cout << "gain = " << gain << endl;
+	//cout << "EV = " << (proba/100.0) * gain  << endl;
 	if( ((proba/100.0) * gain ) > 1){
 		return true;
 	}else{
@@ -109,7 +109,7 @@ double IAPlayer::getProba(char *hand, int nbPlayer){
 	ifstream probaFile;
 	probaFile.open(filename);
 
-	//On crée un deuxieme tableau où les cartes sont inversées car les cartes n'ont pas d'ordre dans le fichier
+	//On crï¿½e un deuxieme tableau oï¿½ les cartes sont inversï¿½es car les cartes n'ont pas d'ordre dans le fichier
 	int length = strlen(hand);
 	char inverseHand[length+1];
 	inverseHand[0] = hand[1];
@@ -128,12 +128,12 @@ double IAPlayer::getProba(char *hand, int nbPlayer){
 		while(!found){
 			if(!probaFile.eof()){ //tant que la fin du fichier n'est pas atteint.
 				probaFile >> handproba;
-				if(strcmp(hand,handproba.c_str()) == 0 || strcmp(inverseHand,handproba.c_str()) == 0){ // la main est trouvée
+				if(strcmp(hand,handproba.c_str()) == 0 || strcmp(inverseHand,handproba.c_str()) == 0){ // la main est trouvï¿½e
 					found = true;
 				}else{
 					getline(probaFile,dump); // ce n'est pas la bonne main, on jette la ligne.
 				}
-			}else{ //la fin du fichier est atteint sans avoir trouvé de main identique : erreur, on s'arrete.
+			}else{ //la fin du fichier est atteint sans avoir trouvï¿½ de main identique : erreur, on s'arrete.
 				cerr << hand << " : main introuvable !" << endl;
 				return -1;
 			}
@@ -141,10 +141,10 @@ double IAPlayer::getProba(char *hand, int nbPlayer){
 
 		if(found){
 			if(nbPlayer < 1){
-				cerr << "le nombre d'adversaire ne peut être nul : calcul des probas pour 1 adversaire..." << endl;
+				cerr << "le nombre d'adversaire ne peut ï¿½tre nul : calcul des probas pour 1 adversaire..." << endl;
 				nbPlayer = 1;
 			}else if (nbPlayer > 9){
-				cerr << "le nombre d'adversaire ne peut être supérieur a 9 : calcul des probas pour 9 adversaires..." << endl;
+				cerr << "le nombre d'adversaire ne peut ï¿½tre supï¿½rieur a 9 : calcul des probas pour 9 adversaires..." << endl;
 				nbPlayer = 9;
 			}
 			for(int i = 0; i < nbPlayer-1; i++){

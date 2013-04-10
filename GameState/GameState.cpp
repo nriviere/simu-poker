@@ -50,7 +50,7 @@ void GameState::endOfState() {
 		endOfTurn();
 	} else {
 		setNextState();
-		game->play();
+		//game->play();
 	}
 }
 
@@ -68,11 +68,17 @@ void GameState::endOfTurn() {
 
 	playerList->eraseLosers();
 	if (canEndGame()) {
+		game->setEndGame();
 		std::cout << "End of game" << std::endl;
 	} else {
 		playerList->setNextTurn();
-		game->getPots()->clear();
+		while( game->getPots()->size() > 0)
+		{
+			delete game->getPots()->front();
+			game->getPots()->pop_front();
+		}
+
 		game->setCurrentState(game->getStateList()->getPreflop());
-		game->play();
+		//game->play();
 	}
 }

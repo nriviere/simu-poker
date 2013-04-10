@@ -76,17 +76,20 @@ void River::endOfTurn() {
 				if (compare(value, max) > 0) {
 					std::cout << "New Max : " << value << " > " << max
 							<< std::endl;
+					delete[] max;
 					max = value;
 					maxPowerPlayers.clear();
 					maxPowerPlayers.push_back((*ite));
 				} else if (compare(value, max) == 0) {
 					std::cout << "Nouvelle egalité" << std::endl;
 					maxPowerPlayers.push_back((*ite));
-					for (list<Player*>::iterator p = maxPowerPlayers.begin(); p
-							!= maxPowerPlayers.end(); ++p) {
+					for (list<Player*>::iterator p = maxPowerPlayers.begin();
+							p != maxPowerPlayers.end(); ++p) {
 						std::cout << "Player : " << (*p)->getId() << " "
 								<< value << std::endl;
 					}
+				} else {
+					delete[] value;
 				}
 				++ite;
 			}
@@ -94,28 +97,61 @@ void River::endOfTurn() {
 
 			int amount = (int) (1. * (*pot)->getAmount()
 					/ maxPowerPlayers.size());
+			int diff = (*pot)->getAmount() - amount * maxPowerPlayers.size();
+			Player **winningPlayersByPosition =
+					new Player *[maxPowerPlayers.size()];
+			int pi = 0;
+			for (std::list<Player *>::iterator ite = maxPowerPlayers.begin();
+					ite != maxPowerPlayers.end();) {
+				winningPlayersByPosition[pi++] = (*ite);
+				++ite;
+			}
+
+			bool changed = true;
+			while (changed) {
+				changed = false;
+				for (int i = 0; i < maxPowerPlayers.size()-1; i++) {
+						if(winningPlayersByPosition[i]->getPosition()>winningPlayersByPosition[i+1]->getPosition())
+						{
+							Player *swp = winningPlayersByPosition[i];
+							winningPlayersByPosition[i] = winningPlayersByPosition[i+1];
+							winningPlayersByPosition[i+1] = swp;
+							changed = true;
+						}
+				}
+			}
+
 			//std::cout << "current pot amount " <<
-			for (std::list<Player *>::iterator ite = maxPowerPlayers.begin(); ite
-					!= maxPowerPlayers.end();) {
+			for (std::list<Player *>::iterator ite = maxPowerPlayers.begin();
+					ite != maxPowerPlayers.end();) {
 				std::cout << "Player : " << (*ite)->getId() << " wins !"
 						<< std::endl;
 				(*ite)->modifyBankRoll(amount);
 				++ite;
 			}
+			pi = 0;
+			while(diff>0)
+			{
+				winningPlayersByPosition[pi]->modifyBankRoll(1);
+				diff--;
+			}
+
+			delete[] max;
 			++pot;
 		}
 		game->getPots()->clear();
 	}
 	game->getPlayerList()->eraseLosers();
 	if (canEndGame()) {
+		game->setEndGame();
 		std::cout << "End of game" << std::endl;
 	} else {
 		game->getPlayerList()->setNextTurn();
 		game->setCurrentState(game->getStateList()->getPreflop());
-		game->play();
+		//game->play();
 	}
 }
 
 River::~River() {
-	// TODO Auto-generated destructor stub
+// TODO Auto-generated destructor stub
 }

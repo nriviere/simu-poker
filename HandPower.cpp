@@ -113,7 +113,7 @@ int isSinglePair(char* hand) { // test de la paire simple
 }
 
 char* calculForceSymbolique(char* hand) { // création des forces symboliques
-	char* forceSymbolique = (char*) malloc(10 * sizeof(char*));
+	char* forceSymbolique = new char[10];
 
 	if (isStraightFlush(hand) == 1) {
 		sprintf(forceSymbolique, "9%c", hand[0]);
@@ -190,6 +190,13 @@ char* calculForceSymbolique(char* hand) { // création des forces symboliques
 	}
 	sprintf(forceSymbolique, "1%c%c%c%c%c", hand[0], hand[2], hand[4], hand[6],
 			hand[8]);
+	/*forceSymbolique[0]='1';
+	forceSymbolique[1]=hand[0];
+	forceSymbolique[2]=hand[2];
+	forceSymbolique[3]=hand[4];
+	forceSymbolique[4]=hand[6];
+	forceSymbolique[5]=hand[8];
+	forceSymbolique[6]='\0';*/
 	return forceSymbolique;
 }
 

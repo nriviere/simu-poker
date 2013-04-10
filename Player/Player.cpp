@@ -14,6 +14,7 @@
 using namespace std;
 
 Player::Player() {
+	bankRoll = 0;
 }
 
 Player::Player(int bankRoll) {
@@ -31,8 +32,7 @@ Player::Player(const Player &player) {
 	statistics = new PlayerStatistics(*player.statistics);
 }
 
-Player *Player::clone() const
-{
+Player *Player::clone() const {
 	exit(-1);
 	return new Player(*this);
 }
@@ -53,12 +53,13 @@ void Player::play() {
 
 int Player::modifyBankRoll(int amount) {
 	int left = bankRoll += amount;
-	if(left < 0){
+	if (left < 0) {
 		bankRoll = 0;
 	}
 	return left;
 
 }
+
 
 void Player::setId(const int id) {
 	this->id = id;
@@ -135,14 +136,15 @@ char *Player::getHandPower() {
 			for (i[2] = i[1] + 1; i[2] < 7; i[2]++) {
 				for (i[3] = i[2] + 1; i[3] < 7; i[3]++) {
 					for (i[4] = i[3] + 1; i[4] < 7; i[4]++) {
-						finalHands[pos] = new char[10];
+						finalHands[pos] = new char[11];
 						for (int it = 0; it < 5; it++) {
 							finalHands[pos][it * 2] = cards[i[it]]->getId()[0];
 							//std::cout << cards[i[it]]->getId()[0] << std::endl;
-							finalHands[pos][it * 2 + 1]
-									= cards[i[it]]->getId()[1];
+							finalHands[pos][it * 2 + 1] =
+									cards[i[it]]->getId()[1];
 							//std::cout << cards[i[it]]->getId()[1] << std::endl;
 						}
+						finalHands[pos][10] = '\0';
 						pos++;
 					}
 				}
@@ -158,10 +160,14 @@ char *Player::getHandPower() {
 		handPower = calculForceSymbolique(finalHands[i]);
 		//cout << handPower << endl;
 		//power = ;
-		if (compare(handPower, maxHand) > 0)
+		if (compare(handPower, maxHand) > 0) {
+			delete[] maxHand;
 			maxHand = handPower;
+		} else {
+			delete[] handPower;
+		}
 	}
-
+	delete[] finalHands;
 	return maxHand;
 }
 

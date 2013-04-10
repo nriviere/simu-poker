@@ -21,6 +21,7 @@ PlayerList::PlayerList(Game *game, Player **players, int playerCount) {
 		players[i]->setGame(game);
 		int j = game->getCurrentPlayerId();
 		players[i]->setId(j);
+		players[i]->setPosition(i);
 		this->players.push_back(players[i]);
 		playersInGame.push_back(players[i]);
 	}
@@ -43,6 +44,12 @@ Player *PlayerList::getNext() {
 	current++;
 	return player;
 }
+
+Player *PlayerList::getNearestFromDealer()
+{
+	return playersInGame.front();
+}
+
 
 void PlayerList::shuffle(Player **players, int playerCount) {
 	int out, in;
@@ -141,6 +148,13 @@ int PlayerList::getPlayersInGameCount() {
 void PlayerList::setNextTurn() {
 	players.push_back(players.front());
 	players.pop_front();
+	int i = 0;
+	for (std::list<Player*>::iterator ite = players.begin(); ite
+			!= players.end();) {
+		(*ite)->setPosition(i++);
+		++ite;
+	}
+
 	initPlayersInGame();
 }
 

@@ -14,6 +14,10 @@ Raise::~Raise() {
 }
 
 void Raise::execute() {
+	if (player->getBankRoll()<=0)
+	{
+		return;
+	}
 	int totalAmount = game->getCurrentBet() - player->getCurrentBet();
 	totalAmount += game->getBigBlindAmount() + amount;
 	int left = player->modifyBankRoll(-totalAmount);

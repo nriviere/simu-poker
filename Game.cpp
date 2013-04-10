@@ -28,12 +28,19 @@ Game::Game(Player **players, int playerCount, unsigned int smallBlindAmount) {
 	this->stateList = new GameStateList(this);
 	this->currentState = stateList->getPreflop();
 	this->currentBet = 0;
+	cardsOnTableCount = 0;
+	canEndGame = false;
+	currentPot = NULL;
 	deck = new Deck();
 	state = -1;
 }
 
 void Game::play() {
-	this->currentState->play();
+	while(!canEndGame)
+	{
+		this->currentState->play();
+	}
+
 }
 
 void Game::raise(Player *player, int amount) {

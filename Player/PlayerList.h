@@ -16,6 +16,7 @@ public:
 	PlayerList(Game *game, Player **players, int playerCount);
 	virtual ~PlayerList();
 	Player *getNext();
+	Player *getNearestFromDealer();
 	int getPlayerCount();
 	int getPlayersInGameCount();
 	void shuffle(Player **players, int playerCount);

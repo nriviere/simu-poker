@@ -1,7 +1,6 @@
 <Game>
 	<SmallBlindAmount value="5"/>
 	<Players>
-		
-		<Player filename="XMLPlayerTypes/IAPlayer1.xml" count="5"/>	
+			<Player filename="XMLPlayerTypes/IAPlayer1.xml" count="5"/>	
 	</Players>
 </Game>

@@ -8,12 +8,12 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include subdir.mk
 -include TinyXml/subdir.mk
 -include Player/subdir.mk
 -include GameState/subdir.mk
 -include Cards/subdir.mk
 -include Actions/subdir.mk
+-include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -48,7 +48,7 @@ all: Poker
 Poker: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o"Poker" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "Poker" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
