@@ -45,6 +45,8 @@ void IAPlayer::iPlay(){
 	cout << "Your bankroll  : " << this->bankRoll << endl;
 
 	int playerInGame = this->game->getPlayerList()->getPlayersInGameCount();
+	int potAmout = 0;
+
 	int gain = this->game->getCurrentPot()->getAmount() - this->getCurrentBet();
 
 	if(game->getState() == PFLOP){

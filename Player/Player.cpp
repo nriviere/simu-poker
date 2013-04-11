@@ -60,7 +60,6 @@ int Player::modifyBankRoll(int amount) {
 
 }
 
-
 void Player::setId(const int id) {
 	this->id = id;
 	statistics->setPlayerId(id);
@@ -72,16 +71,18 @@ int Player::getId() {
 
 void Player::paySmallBlind() {
 	int left = modifyBankRoll(-game->getSmallBlindAmount());
-	if (left > 0)
+	if (left > 0) {
 		left = 0;
-	currentBet = game->getSmallBlindAmount() - left;
+	}
+	currentBet = game->getSmallBlindAmount() + left;
 }
 
 void Player::payBigBlind() {
 	int left = modifyBankRoll(-game->getBigBlindAmount());
-	if (left > 0)
+	if (left > 0) {
 		left = 0;
-	currentBet = game->getBigBlindAmount() - left;
+	}
+	currentBet = game->getBigBlindAmount() + left;
 }
 
 bool Player::canEndState() {

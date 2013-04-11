@@ -10,19 +10,25 @@
 #include "PlayerList.h"
 #include "Player.h"
 
-void Preflop::play()
-{
-	game->initDeck();
+int times = 0;
+
+void Preflop::play() {
+	cout << "TIMES : " << times++ << endl;
+	game->getDeck()->shuffle();
 	game->setState(PFLOP);
 	game->setCardsOnTableCount(0);
-	Pot *pot = new Pot();
+	Pot *pot = new Pot(0);
 	PlayerList *playerList = game->getPlayerList();
 	list<Player *> players = playerList->getPlayers();
+	int sum = 0;
+
 
 	for (list<Player*>::iterator p = players.begin(); p != players.end();) {
-			pot->registerPlayer(*p);
-			++p;
+		pot->registerPlayer(*p);
+		sum += (*p)->getBankRoll();
+		++p;
 	}
+
 	game->setCurrentPot(pot);
 	game->getPots()->push_back(pot);
 
@@ -38,14 +44,14 @@ void Preflop::play()
 	everyonePlayed = false;
 	currentPlayer = 0;
 	Player *player;
-	for(int i = 0; i < playerList->getPlayersInGameCount(); i++)
-	{
+
+	for (int i = 0; i < playerList->getPlayersInGameCount(); i++) {
 		player = playerList->getNext();
-		player->setHand(game->getDeck()->pick(),game->getDeck()->pick());
+		sum += player->getBankRoll();
+		player->setHand(game->getDeck()->pick(), game->getDeck()->pick());
 	}
 
-	while(!eos)
-	{
+	while (!eos) {
 		player = playerList->getNext();
 		player->play();
 		playerPlayed();
@@ -54,8 +60,7 @@ void Preflop::play()
 	endOfState();
 }
 
-void Preflop::setNextState()
-{
+void Preflop::setNextState() {
 	game->setCurrentState(game->getStateList()->getFlop());
 }
 

@@ -10,9 +10,12 @@
 #include <ctime>
 #include <iostream>
 
+using namespace std;
+
 Deck::Deck(int cardCount) {
 	this->cardCount = cardCount;
 	cards = new Card*[cardCount];
+	srand(time(0));
 	init();
 	shuffle();
 }
@@ -34,7 +37,6 @@ Card *Deck::pick() {
 void Deck::shuffle() {
 	int out, in;
 	Card *tmp;
-	srand(time(0));
 	for (int i = 0; i < cardCount; i++) {
 		out = rand() % cardCount;
 		in = rand() % cardCount;
@@ -42,19 +44,19 @@ void Deck::shuffle() {
 		cards[in] = cards[out];
 		cards[out] = tmp;
 	}
+	//printOrder();
+	//cout << endl;
 	top = 0;
 }
 
 void Deck::init() {
 	int cardNumber = 0;
-	for(int i = 0; i < cardCount; i++ )
-	{
-		delete cards[i];
-	}
+
 	for (unsigned int i = 0; i < CARD_NUMBER_COUNT; i++) {
 		for (unsigned int j = 0; j < CARD_COLOR_COUNT; j++) {
 
-				cards[cardNumber++] = new Card(CARD_NUMBERS[i], CARD_COLORS[j],cardNumber);
+			cards[cardNumber++] = new Card(CARD_NUMBERS[i], CARD_COLORS[j],
+					cardNumber);
 		}
 	}
 	top = 0;
@@ -62,34 +64,32 @@ void Deck::init() {
 
 void Deck::printOrder() {
 	for (int i = 0; i < cardCount; i++) {
-		Card *c = pick();
+		std::cout << cards[i]->getId() << std::endl;
 
-		std::cout << c->getId() << std::endl;
 	}
 }
 
-Card* Deck::getCard(const char* id, int *pos){
+Card* Deck::getCard(const char* id, int *pos) {
 	int t = -1;
 	bool found = false;
 	do {
 		t++;
-		found = cards[t]->getId()[0]==id[0];
-		found = found && cards[t]->getId()[1]==id[1];
-	}while(!found && t<52);
+		found = cards[t]->getId()[0] == id[0];
+		found = found && cards[t]->getId()[1] == id[1];
+	} while (!found && t < 52);
 
-	if(found && pos){
+	if (found && pos) {
 		*pos = t;
 	}
-
 
 	return found ? cards[t] : 0;
 }
 
-bool Deck::putOnTop(const Card& c){
+bool Deck::putOnTop(const Card& c) {
 	bool ret = false;
 	int p = -1;
-	Card* dc = getCard(c.getId(),&p);
- 	if(dc){
+	Card* dc = getCard(c.getId(), &p);
+	if (dc) {
 		cards[p] = cards[top];
 		cards[top] = dc;
 		ret = true;

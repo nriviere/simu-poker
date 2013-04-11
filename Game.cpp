@@ -36,8 +36,7 @@ Game::Game(Player **players, int playerCount, unsigned int smallBlindAmount) {
 }
 
 void Game::play() {
-	while(!canEndGame)
-	{
+	while (!canEndGame) {
 		this->currentState->play();
 	}
 
@@ -85,14 +84,17 @@ void Game::updatePot() {
 	list<Player*> playersInGame = playerList->getPlayersInGame();
 	list<Player*> players = playerList->getPlayers();
 	int playerBet;
-	for (list<Player*>::iterator p = playersInGame.begin(); p
-			!= playersInGame.end();) {
+
+	for (list<Player*>::iterator p = playersInGame.begin();
+			p != playersInGame.end();) {
 		playerBet = (*p)->getCurrentBet();
 		if (amounts.count(playerBet) == 0) {
 			amounts.insert(playerBet);
 		}
 		++p;
 	}
+	cout << "AMOUNTS : " << amounts.size()<<endl;
+
 
 	if (amounts.size() == 1) {
 		int amount = 0;
@@ -114,9 +116,9 @@ void Game::updatePot() {
 				int paidValue = min(playerBet, valueToPay);
 				currentPot->updateAmount(paidValue);
 				newBet = playerBet - paidValue;
-				(*p) -> setCurrentBet(newBet);
+				(*p)->setCurrentBet(newBet);
 			}
-			cout << "CURRENT POT VALUE : " << currentPot->getAmount() << endl;
+			//cout << "CURRENT POT VALUE : " << currentPot->getAmount() << endl;
 			++p;
 		}
 		previousAmount = (*ite);
@@ -124,19 +126,22 @@ void Game::updatePot() {
 			currentPot = new Pot(0);
 			pots.push_back(currentPot);
 			cout << "CURRENT AMOUNT : " << (*ite) << endl;
-			for (list<Player*>::iterator p = players.begin(); p
-					!= players.end();) {
+			for (list<Player*>::iterator p = players.begin();
+					p != players.end();) {
 				playerBet = (*p)->getCurrentBet();
+				cout << "Player " << (*p)->getId() << " : " << endl;
+				cout << "Bet : " << playerBet << endl;
 				if (playerBet != 0) {
 					int valueToPay = (*ite) - previousAmount;
 					int paidValue = min(playerBet, valueToPay);
 					currentPot->updateAmount(paidValue);
 					newBet = playerBet - paidValue;
-					(*p) -> setCurrentBet(newBet);
+					(*p)->setCurrentBet(newBet);
 					cout << "newBet : " << newBet << endl;
 					currentPot->registerPlayer((*p));
 				}
-				cout << "CURRENT POT VALUE : " << currentPot->getAmount() << endl;
+				cout << "CURRENT POT VALUE : " << currentPot->getAmount()
+						<< endl;
 				++p;
 			}
 			previousAmount = (*ite);
@@ -146,7 +151,7 @@ void Game::updatePot() {
 	}
 }
 
-void Game::initDeck(){
+void Game::initDeck() {
 	deck->init();
 	deck->shuffle();
 }
