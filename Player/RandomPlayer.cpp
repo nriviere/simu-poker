@@ -16,12 +16,12 @@ RandomPlayer::RandomPlayer(int bankRoll) : Player(bankRoll){
 
 void RandomPlayer::iPlay(){
 
-
-        cout << "Random player " << id <<" ("<<bankRoll<<") : " << endl;
-        cout << "Hand : " << hand[0]->getId() << " " << hand[1]->getId() << endl;
-        cout << endl;
-        cout << "Current global bet : " << this->getGame()->getCurrentBet() << endl;
-        cout << "Your bet : " << this->currentBet << endl;
+	cout << "##########################################################" << endl;
+	cout << "Random player " << id <<" ("<<bankRoll<<") : " << endl;
+	cout << "Hand : " << hand[0]->getId() << " " << hand[1]->getId() << endl;
+	cout << endl;
+	cout << "Current global bet : " << this->getGame()->getCurrentBet() << endl;
+	cout << "Your bet : " << this->currentBet << endl;
 
 	cout << "Cards on table :";
 	for(int i = 0; i < game->getCardsOnTableCount(); i++)
@@ -30,20 +30,16 @@ void RandomPlayer::iPlay(){
 	}
 	cout << endl;
 
-	if(game->isCheckable()){
-		cout << "\tCHECK" << endl;
-		check();
-	}
-	else{
-		cout << "\tCALL" << endl;
-		call();
-	}
+//	if(game->isCheckable()){
+//		cout << "\tCHECK" << endl;
+//		check();
+//	}
+//	else{
+//		cout << "\tCALL" << endl;
+//		call();
+//	}
 
-
-/*	
-  	int d = rand()%10;
-	cout << "d="<<d<<"\t";
-	cout << "Random player " << id <<" ("<<bankRoll<<") : ";
+	int d = rand()%10;
 	if(game->isCheckable()){
 		//check or bet
 
@@ -61,7 +57,7 @@ void RandomPlayer::iPlay(){
 	}
 	else{
 		//fold, call or raise
-		if(0){
+		if(d<3){
 			cout <<"fold" << endl;
 			fold();
 		}
@@ -77,7 +73,9 @@ void RandomPlayer::iPlay(){
 		}
 
 	}
-*/
+
+	cout << "##########################################################" << endl;
+
 }
 
 Player *RandomPlayer::clone()  const
